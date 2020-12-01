@@ -11,7 +11,8 @@ fn parse_lines_to_int() -> Vec<i32> {
 fn get_nums_where_sum(values: Vec<i32>, sum: i32) -> Vec<i32> {
     for i in 1..values.len() {
         let value1: i32 = values[i-1];
-        let value2: i32 = *values[i..].iter().find(|&&v| v + value1 == sum).unwrap_or(&0);
+        let target = sum - value1;
+        let value2: i32 = *values[i..].iter().find(|&&v| v == target).unwrap_or(&0);
         if value2 != 0 {
             return vec![value1, value2];
         }
